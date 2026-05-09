@@ -17,8 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
     hamburger.addEventListener("click", openSidebar);
     overlay.addEventListener("click", closeSidebar);
 
-    
-
     //  Cerrar sesión
     document.getElementById("btn-logout").addEventListener("click", (e) => {
         e.preventDefault();

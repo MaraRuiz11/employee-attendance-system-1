@@ -4,7 +4,7 @@ Aplicación web para el registro y gestión de asistencia del personal, desarrol
 
 ## 1. Descripción del Negocio
 
-Las organizaciones modernas necesitan gestionar la asistencia de su personal de forma precisa y centralizada. Este sistema reemplaza los registros manuales en papel o planillas físicas, eliminando problemas como:
+Las organizaciones modernas necesitan gestionar la asistencia de su personal de forma precisa y centralizada (Solo de un turno). Este sistema reemplaza los registros manuales en papel o planillas físicas, eliminando problemas como:
 
 - Registros incompletos o manipulados
 - Alto costo administrativo por procesar asistencias manualmente

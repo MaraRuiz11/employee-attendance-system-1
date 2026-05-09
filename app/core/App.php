@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . '/Router.php';
-
 // App es el punto de arranque de toda la aplicación.
 // Su único trabajo es preparar el entorno (sesiones) y lanzar el Router.
 // Es lo primero que se ejecuta después de que app/index.php carga la configuración.
