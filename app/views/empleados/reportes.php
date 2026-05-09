@@ -10,18 +10,21 @@
 </head>
 
 <body>
-
+    
 <?php include __DIR__ . '/../layouts/sidebar.php'; ?>
 
 <!-- CONTENIDO PRINCIPAL -->
 <main>
     <nav class="breadcrumb">
-        <span>Inicio</span>
+        <span>Dashboard</span>
         <i class="fa-solid fa-chevron-right"></i>
-        <span id="breadcrumb-page">Dashboard</span>
+        <span>Empleados</span>
+        <i class="fa-solid fa-chevron-right></1>
+        <span id="breadcrumb-page">Reportess</span>
     </nav>
     <div class="main-content">
         <div class="table-responsive">
+            <?php print_r($empleados) ?? 'Todavia no'; ?>
         </div>
     </div>
 </main>

@@ -17,17 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     hamburger.addEventListener("click", openSidebar);
     overlay.addEventListener("click", closeSidebar);
 
-    // Nav links: marcar activo y cerrar sidebar 
-    const navLinks = document.querySelectorAll(".sidebar ul li a[data-page]");
-
-    navLinks.forEach(link => {
-        link.addEventListener("click", (e) => {
-            e.preventDefault();
-            navLinks.forEach(l => l.classList.remove("activo"));
-            link.classList.add("activo");
-            closeSidebar();
-        });
-    });
+    
 
     //  Cerrar sesión
     document.getElementById("btn-logout").addEventListener("click", (e) => {
