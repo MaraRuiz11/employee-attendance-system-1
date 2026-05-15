@@ -52,7 +52,7 @@
                                     <td><?php echo htmlspecialchars($empleaditos['dni']) ?></td>
                                     <td><?php echo htmlspecialchars($empleaditos['celular']) ?></td>
                                     <td><?php echo htmlspecialchars($empleaditos['correo']) ?></td>
-                                    <td><?php echo htmlspecialchars($empleaditos['id_cargo']) ?></td>
+                                    <td><?php echo htmlspecialchars($empleaditos['nombre_cargo']) ?></td>
                                     <td><?php echo htmlspecialchars($empleaditos['fecha_registro']) ?></td>
                                     <td>
                                         <button class="btn-editar">
