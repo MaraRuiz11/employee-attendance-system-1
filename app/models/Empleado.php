@@ -18,7 +18,10 @@ class Empleado{
     //public function getAll():array
     public function obtenerEmpleados():array {
         // variable $sql para almacenar
-        $sql = "SELECT * FROM empleado";
+        $sql = "SELECT * FROM empleado
+                INNER JOIN cargo
+                ON empleado.id_cargo = cargo.id_cargo
+                ORDER BY empleado.id_cargo DESC";
         // statement = declaración
         $stmt = $this->db->prepare($sql);
         // Ejecutamos la declaración ($stmt)
