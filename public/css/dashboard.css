@@ -145,6 +145,61 @@ body {
     font-weight: 600;
 }
 
+/* ================================ START Dropdown ================================ */
+/* Dropdown container */
+.sidebar .dropdown {
+    position: relative;
+}
+
+/* Botón del dropdown */
+.sidebar .dropbtn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.sidebar .dropbtn .arrow {
+    margin-left: auto;
+    transition: transform 0.3s ease;
+}
+
+/* Contenido del dropdown (oculto por defecto) */
+.sidebar .dropdown-content {
+    display: none;
+    padding-left: 30px;
+    margin-top: 5px;
+}
+
+/* Mostrar dropdown cuando tiene la clase 'show' */
+.sidebar .dropdown.show .dropdown-content {
+    display: block;
+}
+
+/* Rotar la flecha cuando está abierto */
+.sidebar .dropdown.show .arrow {
+    transform: rotate(180deg);
+}
+
+/* Estilos de los items del dropdown */
+.sidebar .dropdown-content a {
+    padding: 8px 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+}
+
+.sidebar .dropdown-content a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+}
+
+.sidebar .dropdown-content i {
+    width: 20px;
+    font-size: 14px;
+}
+/* ================================ END Dropdown ================================ */
 /* logout al fondo */
 .nav-logout {
     margin-top: auto;

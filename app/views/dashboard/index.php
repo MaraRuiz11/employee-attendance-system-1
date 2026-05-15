@@ -11,7 +11,7 @@
 
 <body>
 
-<?php include __DIR__ . '/../layouts/sidebar.php'; ?>
+<?php include __DIR__ . '/../layouts/sidebar-dashboard.php'; ?>
 
 <!-- CONTENIDO PRINCIPAL -->
 <main>

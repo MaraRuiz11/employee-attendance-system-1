@@ -14,7 +14,7 @@
     <div id="fadeOverlay"></div>
 
     <!-- Menú móvil (overlay) fuera del nav para que position:fixed funcione siempre -->
-    <?php include __DIR__ . '/../layouts/header.php'; ?>
+    <?php include __DIR__ . '/../layouts/header-home.php'; ?>
 
     <!-- Sección principal con video de fondo -->
     <section class="stage">
@@ -69,7 +69,7 @@
     </section>
 
     <!-- Footer -->
-    <?php include __DIR__ . '/../layouts/footer.php'; ?>
+    <?php include __DIR__ . '/../layouts/footer-home.php'; ?>
     <script src="<?php echo BASE_URL; ?>/public/js/landing.js"></script>
 </body>
 </html>

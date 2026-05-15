@@ -33,6 +33,11 @@ class Router {
         // Si no hay segundo segmento, ejecutamos "index" por defecto.
         $metodo = !empty($partes[1]) ? $partes[1] : 'index';
 
+        // Compatibilidad temporal: si alguien usa 'reportes.php' en la URL,
+        // lo convertimos en 'reportes'. Esto no es la forma ideal, pero evita
+        // errores en caso de enlaces antiguos.
+        $metodo = preg_replace('/\.php$/i', '', $metodo);
+
         // SEGMENTOS 2 en adelante: parámetros opcionales
         // Ejemplo: "empleados/ver/5" -> $params = ['5']
         $params = array_slice($partes, 2);
