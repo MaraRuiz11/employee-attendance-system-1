@@ -5,6 +5,12 @@ require_once __DIR__ . '/../models/Empleado.php';
 class EmpleadosController extends Controller {
     // Método por defecto. 
     public function index(): void {
+        //Mientras que no se inicio secion - que le envia al login
+if(!isser($_SESSION['usuario'])){
+    header("Location: " . BASE_URL ."/login"); 
+    exit(); //Por precausion
+    }
+
         //Instanciamos el objeto de la clase EMPLEADO;
         $modelo = new Empleado();
         $variable_empleados = $modelo->obtenerEmpleados();
