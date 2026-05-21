@@ -14,11 +14,11 @@ class EmpleadosController extends Controller {
     // reportes() muestra el listado completo de empleados.
     // Ejemplo: /empleados/reportes
     public function reporte(): void {
-        // Validación de sesión: si no hay usuario logueado, redirigimos al login.
         if (!isset($_SESSION['usuario'])) {
             header("Location: " . BASE_URL . "/login");
             exit();
         }
+        $this->soloSuperAdmin();
 
         // Cargamos el modelo y obtenemos los datos de empleados.
         $modelo = new Empleado();
@@ -47,6 +47,7 @@ class EmpleadosController extends Controller {
             header("Location: " . BASE_URL . "/login");
             exit();
         }
+        $this->soloSuperAdmin();
 
         $this->view('empleados/registro', [
             'usuario' => $_SESSION['usuario']

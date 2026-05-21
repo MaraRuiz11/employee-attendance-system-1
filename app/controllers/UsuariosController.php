@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/../core/Controller.php';
 // Controlador de la vistas Cargos. --- Solo accesible para usuarios que hayan iniciado sesión.
-class CargosController extends Controller {
+class UsuariosController extends Controller {
     //Creamos la funcion por defecto para que me redireccione al INDEX -- o a la pagina que deseo por defecto.
     public function index(): void{
         $this->reporte(); //funcion de la vistas reportes();
@@ -15,7 +15,7 @@ class CargosController extends Controller {
         }
         $this->soloSuperAdmin();
         // Enviamos los datos a la vista.
-        $this->view('cargos/reportes', [
+        $this->view('usuarios/reportes', [
         'usuario' => $_SESSION['usuario'],
         ]);
     }

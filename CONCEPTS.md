@@ -115,6 +115,100 @@ Usuario entra a /employees → Router → EmployeeController → Employee (model
 
 ---
 
+#### ¿Cuándo crear un alias en un método y cuándo no?
+
+Un **alias** es un método vacío que simplemente llama a otro método que ya existe.
+Se usa cuando quieres que **dos URLs distintas hagan exactamente lo mismo**.
+
+**Caso 1 — SÍ necesitas alias: singular vs plural**
+
+El Router convierte la URL directamente en el nombre del método.
+Si tienes un método `reporte()` pero el usuario escribe `/asistencias/reportes`,
+el Router busca `reportes()` y no lo encuentra → error 404.
+La solución es crear un alias:
+
+```php
+// Método real con toda la lógica
+public function reporte(): void {
+    if (!isset($_SESSION['usuario'])) { ... }
+    $this->view('asistencias/reportes', [...]);
+}
+
+// Alias: solo redirige al método real
+// Permite que /asistencias/reportes también funcione
+public function reportes(): void {
+    $this->reporte();
+}
+```
+
+Ahora tanto `/asistencias/reporte` como `/asistencias/reportes` funcionan.
+
+---
+
+**Caso 2 — NO necesitas alias: el nombre ya es único**
+
+Si el nombre del método coincide exactamente con lo que el usuario escribe en la URL,
+no hay ambigüedad y no hace falta alias.
+
+```php
+// Solo existe una URL posible: /asistencias/ejemplo_hoja
+// El Router la mapea directamente a este método. No hay variante singular/plural.
+public function ejemplo_hoja(): void {
+    if (!isset($_SESSION['usuario'])) { ... }
+    $this->view('asistencias/ejemplo_hoja', [...]);
+}
+```
+
+---
+
+**Regla rápida para saber si necesitas alias:**
+
+| Pregunta | Respuesta | ¿Alias? |
+|----------|-----------|---------|
+| ¿Hay dos formas de escribir la misma URL? | `reporte` y `reportes` | ✅ Sí |
+| ¿El método `index()` es el punto de entrada del controller? | `/empleados` llama `index()` que llama `reporte()` | ✅ Sí |
+| ¿El nombre del método ya es exacto y único? | `ejemplo_hoja` | ❌ No |
+
+---
+
+**Patrón completo de un controller bien estructurado:**
+
+```php
+class AsistenciasController extends Controller {
+
+    // index() → punto de entrada de /asistencias
+    // Delega a otro método en vez de tener lógica propia
+    public function index(): void {
+        $this->view('asistencias/index'); // página pública del kiosk
+    }
+
+    // Método con la lógica real
+    public function reporte(): void {
+        if (!isset($_SESSION['usuario'])) {
+            header('Location: ' . BASE_URL . '/login');
+            exit;
+        }
+        $this->view('asistencias/reportes', ['usuario' => $_SESSION['usuario']]);
+    }
+
+    // Alias: permite /asistencias/reportes además de /asistencias/reporte
+    public function reportes(): void {
+        $this->reporte();
+    }
+
+    // Sin alias: /asistencias/ejemplo_hoja es la única URL posible
+    public function ejemplo_hoja(): void {
+        if (!isset($_SESSION['usuario'])) {
+            header('Location: ' . BASE_URL . '/login');
+            exit;
+        }
+        $this->view('asistencias/ejemplo_hoja', ['usuario' => $_SESSION['usuario']]);
+    }
+}
+```
+
+---
+
 ### `app/models/`
 Aquí van los modelos del sistema. Cada modelo representa una tabla de la base de datos
 y contiene los métodos para consultar, insertar, actualizar y eliminar registros usando PDO.

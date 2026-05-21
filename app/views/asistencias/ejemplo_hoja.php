@@ -18,13 +18,13 @@
     <nav class="breadcrumb">
         <span>Inicio</span>
         <i class="fa-solid fa-chevron-right"></i>
-        <span>Cargos</span>
+        <span">Asistencia</span>
         <i class="fa-solid fa-chevron-right"></i>
-        <span id="breadcrumb-page">Reportes</span>
+        <span id="breadcrumb-page">EJEMPLO AQUI MODIFICA</span>
     </nav>
     <div class="main-content">
         <div class="table-responsive">
-            <h1>ESTO ES CARGO </h1>
+            <H1>ESTO ES UN EJEMPLO DE HOJA DE PLANTILLA</H1>
         </div>
     </div>
 </main>
