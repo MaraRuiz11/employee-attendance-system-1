@@ -11,9 +11,13 @@ class AsistenciasController extends Controller {
     }
 
     public function buscar(): void{
-        $dni_variable = $_POST['dni'];
-        echo "AQUI ESTA MI DNI ".$dni_variable;
-        print_r($dni_variable);
+        require_once __DIR__ . '/../models/Empleado.php'; //llamamos al models
+        $dni_variable = $_POST['dni']; //Almacenamos en un variable el DNI
+        $empleado = new Empleado(); //Instanciamos la clase o objeto
+        //Utilizamos la funcion que creamos en models/empleados
+        $resultado = $empleado->buscarPorDni($dni_variable); 
+        // echo "AQUI ESTA MI DNI ".$dni_variable;
+        print_r($resultado);
     }
 
     // Reporte de asistencias: requiere sesión activa.
