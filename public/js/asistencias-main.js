@@ -33,11 +33,37 @@ document.addEventListener("DOMContentLoaded", () => {
         headers: {'Content-Type':'application/x-www-form-urlencoded'},
         body: 'dni='+dni_parametro
     }).then(function(respuesta){
-        console.log(respuesta)
+        // Retornamos la respesta JSON
+        return respuesta.json(); 
     }).then(function(datos){
-        console.log(datos)
+        console.log(datos) //sirve para los resultados en consola del navegador
+        if(datos.encontrado){
+           console.log("EMPLEADO CORRECTO")
+            name_employer.textContent = datos.empleado.nombre + " " + datos.empleado.apellido;
+            registrarAsistenciaEmpleado(datos.empleado.id_empleado) //ESTE ES MI FUNCION PARA REGISTRAR              
+            msj.textContent = "Empleado encontrado"
+        }else{
+           //console.log("EMPLEADO NO ECONTRADO")
+            name_employer.textContent = "Empleado no encontrado"
+            msj.textContent = "Empleado no debe trabajar en esta empresa"
+        }
     })
-    
   }
+
+  //Funcion para registrar el empleado, una vez consultado su DNI
+  function registrarAsistenciaEmpleado(idEmpleado){
+    //Enviamos los datos mediante ajax-fetch
+    fetch(BASE_URL + "/asistencias/registrar", {
+        method: 'POST',
+        headers: {'Content-Type':'application/x-www-form-urlencoded'},
+        body: 'id_empleadito='+idEmpleado
+    }).then(function(respuesta){
+        // Retornamos la respesta JSON
+        return respuesta.json(); 
+    }).then(function(datos){
+        console.log(datos) //sirve para los resultados en consola del navegador
+    })
+  }
+
 
 });

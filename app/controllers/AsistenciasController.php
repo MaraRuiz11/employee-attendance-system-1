@@ -17,7 +17,17 @@ class AsistenciasController extends Controller {
         //Utilizamos la funcion que creamos en models/empleados
         $resultado = $empleado->buscarPorDni($dni_variable); 
         // echo "AQUI ESTA MI DNI ".$dni_variable;
-        print_r($resultado);
+        //print_r($resultado);
+
+        //CONVETIMOS EL FORMATO DE ARRAY A JSON ===
+        // Le decimos al navegador que la respuesta sea JSON
+        header('Content-type: application/json');
+        //Consultamos si el "$resulrado" haya encontrado al empleado
+        if($resultado){
+            echo json_encode(['encontrado'=>true]);
+        }else{
+            echo json_encode(['encontrado'=>false]);
+        }
     }
 
     // Reporte de asistencias: requiere sesión activa.
