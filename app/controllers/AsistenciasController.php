@@ -10,6 +10,12 @@ class AsistenciasController extends Controller {
         $this->view('asistencias/index');
     }
 
+    public function buscar(): void{
+        $dni_variable = $_POST['dni'];
+        echo "AQUI ESTA MI DNI ".$dni_variable;
+        print_r($dni_variable);
+    }
+
     // Reporte de asistencias: requiere sesión activa.
     // Ejemplo: /asistencias/reporte
     public function reporte(): void { //esto de aqui es un funcion reporte() pero yo estoy creando no se vincula con ningun archivo

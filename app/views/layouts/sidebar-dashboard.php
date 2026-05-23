@@ -2,7 +2,9 @@
 <!--Detectamos en qué pagina estamos para marcar el link activo del siderbar(inicio,producto,...)-->
 <?php
 $rutaActual  = explode('/', trim($_GET['url'] ?? 'dashboard', '/'))[0] ?: 'dashboard';
-$esSuperAdmin = ($_SESSION['usuario']['rol'] ?? '') === 'superadmin';
+$esSuperAdmin = ($_SESSION['usuario']['roles'] ?? '') === 'superadmin';
+
+
 ?>
 
 <!-- TOPBAR (solo visible en móvil) -->
@@ -34,6 +36,7 @@ $esSuperAdmin = ($_SESSION['usuario']['rol'] ?? '') === 'superadmin';
         </li>
         <!-- ================ END DASHBOARD ================ -->
         <?php if ($esSuperAdmin): ?>
+            
         <!-- ================ START EMPLEADOS ================ -->
         <li class="<?php echo $rutaActual === 'empleados' ? 'dropdown show' : 'dropdown'; ?>">
             <a href="#" class="dropbtn <?php echo $rutaActual === 'empleados' ? 'activo' : ''; ?>">
@@ -96,16 +99,16 @@ $esSuperAdmin = ($_SESSION['usuario']['rol'] ?? '') === 'superadmin';
         </li>
         <!-- ================ END ASISTENCIA ================ -->
 
-        <?php if ($esSuperAdmin): ?>
-        <!-- ================ START USUARIOS ================ -->
-        <li>
-            <a href="<?php echo BASE_URL; ?>/usuarios" class="<?php echo $rutaActual === 'usuario' ? 'activo' : ''; ?>">
-                <i class="fa-solid fa-user-cog"></i>
-                <span>Usuarios</span>
-            </a>
-        </li>
-        <!-- ================ END USUARIOS ================ -->
-        <?php endif; ?>
+            <?php if ($esSuperAdmin): ?>
+            <!-- ================ START USUARIOS ================ -->
+            <li>
+                <a href="<?php echo BASE_URL; ?>/usuarios" class="<?php echo $rutaActual === 'usuario' ? 'activo' : ''; ?>">
+                    <i class="fa-solid fa-user-cog"></i>
+                    <span>Usuarios</span>
+                </a>
+            </li>
+            <!-- ================ END USUARIOS ================ -->
+            <?php endif; ?>
         <li class="nav-logout">
             <a href="<?php echo BASE_URL; ?>/logout" id="btn-logout">
                 <i class="fa-solid fa-right-from-bracket"></i>

@@ -1,31 +1,12 @@
-<!DOCTYPE html>
-<html lang="Es">
+<?php
+// Punto de entrada de la aplicación.
+// Todo pasa por aquí gracias al .htaccess.
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo TITLE_BUSINESS; ?> - Panel de Administración</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/public/css/dashboard.css">
-</head>
+// Cargamos la configuración (constantes de BD, BASE_URL, etc.)
+require_once __DIR__ . '/config/config.php';
 
-<body>
+// Cargamos la clase App que arranca el Router
+require_once __DIR__ . '/core/App.php';
 
-<?php include __DIR__ . '/../layouts/sidebar-dashboard.php'; ?>
-
-<!-- CONTENIDO PRINCIPAL -->
-<main>
-    <nav class="breadcrumb">
-        <span>Inicio</span>
-        <i class="fa-solid fa-chevron-right"></i>
-        <span id="breadcrumb-page">Dashboard</span>
-    </nav>
-    <div class="main-content">
-        <div class="table-responsive">
-        </div>
-    </div>
-</main>
-<script src="<?php echo BASE_URL; ?>/public/js/dashboard.js"></script>
-</body>
-
-</html>
+// Iniciamos la aplicación
+(new App())->run();

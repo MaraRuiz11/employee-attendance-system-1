@@ -26,9 +26,7 @@
 
     <!-- PANEL DERECHO -->
     <div class="panel-right">
-
         <div class="reloj" id="reloj">00:00:00</div>
-
         <div class="barcode-wrap">
             <i class="fa-solid fa-barcode barcode-icon"></i>
             <input
@@ -39,9 +37,12 @@
                 autofocus
             >
         </div>
-
+        <div class="mensaje" id="mensaje">
+            <p id="msj"></p>
+        </div>        
     </div>
 
+    <script>let BASE_URL = '<?php echo BASE_URL; ?>'</script>
     <script src="<?php echo BASE_URL; ?>/public/js/asistencias-main.js"></script>
 </body>
 </html>

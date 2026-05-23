@@ -11,7 +11,7 @@ class LoginController extends Controller {
         // Si ya hay sesión activa, no tiene sentido mostrar el login.
         // Redirigimos directo al dashboard.
         if (isset($_SESSION['usuario'])) {
-            $destino = $_SESSION['usuario']['rol'] === 'superadmin' ? '/dashboard' : '/asistencias';
+            $destino = $_SESSION['usuario']['roles'] === 'superadmin' ? '/dashboard' : '/asistencias';
             header('Location: ' . BASE_URL . $destino);
             exit;
         }
@@ -39,7 +39,7 @@ class LoginController extends Controller {
                     $_SESSION['usuario'] = $resultado;
 
                     // Superadmin va al dashboard, admin va directo a asistencias.
-                    $destino = $resultado['rol'] === 'superadmin' ? '/dashboard' : '/asistencias';
+                    $destino = $resultado['roles'] === 'superadmin' ? '/dashboard' : '/dashboard';
                     header('Location: ' . BASE_URL . $destino);
                     exit;
                 } else {

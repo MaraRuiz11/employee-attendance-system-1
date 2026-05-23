@@ -9,7 +9,7 @@ class Controller {
     // Redirige al dashboard si el usuario no es superadmin.
     // Úsalo al inicio de cualquier método que solo deba ver el superadmin.
     protected function soloSuperAdmin(): void {
-        if (($_SESSION['usuario']['rol'] ?? '') !== 'superadmin') {
+        if (($_SESSION['usuario']['roles'] ?? '') !== 'superadmin') {
             header('Location: ' . BASE_URL . '/dashboard');
             exit;
         }

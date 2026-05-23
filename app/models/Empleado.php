@@ -30,5 +30,18 @@ class Empleado{
         //Retornamos los datos
         return $stmt->fetchAll();
     }
+
+    //Creamos un modulo para llamar a UN empleado por DNI.
+    public function buscarPorDni(String $dni){
+        // variable $sql para almacenar  
+        $sql = "SELECT * FROM empleado WHERE dni = ?"; 
+        // statement = declaración
+        $stmt = $this->db->prepare($sql);
+        // Ejecutamos la declaración ($stmt)
+        $stmt->execute([$dni]);
+        //Retornamos los datos
+        return $stmt->fetchAll();
+    }
+
 }
 
